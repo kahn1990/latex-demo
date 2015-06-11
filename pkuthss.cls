@@ -1,0 +1,159 @@
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesClass{pkuthss}
+	[2010/07/23 v1.2beta Peking University dissertation document class]
+%===========将文档类参数全部传递给ctexbook文档类==============
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+\ProcessOptions\relax
+%===============此文档类以ctexbook为基础，设定页面尺寸为A4，默认字号为小四号==============
+%===========CJKfntef宏包提供了\maketitle中用到的\CJKunderline命令============
+%===============fancyhdr宏包提供了方便使用的命令用于设置页眉、页脚============
+\LoadClass[fntef,a4paper,fancyhdr,cs4size]{ctexbook}[2010/01/22]
+%==========此宏包提供图形支持============
+\RequirePackage{graphicx}[1999/02/16]
+%===========此宏包提供了方便使用的命令用于设置页面布局==============
+\RequirePackage{geometry}
+%===============设定页面布局、设定页眉、页脚样式======================
+\geometry{height=240mm,width=150mm,includeheadfoot,headheight=1.5cm,foot=1.75cm,left=2.5cm,right=2cm,top=2.5cm,bottom=2cm}
+%=============设置页芯居中=================
+\geometry{centering}
+% ========设置内容章节样式和目录字样===========
+\CTEXsetup[
+    format={\heiti\zihao{-2}\centering\linespread{1.6}},
+    number={\arabic{chapter}},
+    nameformat={},
+    aftername={\quad},
+    titleformat={},
+    beforeskip={12bp},
+    afterskip={6bp},
+]{chapter}
+\CTEXsetup[
+    format={\heiti\zihao{-3}\filright\linespread{1.2}},
+    nameformat={},
+    aftername={\quad},
+    titleformat={},
+    beforeskip={6bp},
+    afterskip={6bp},
+]{section}
+\CTEXsetup[
+    format={\heiti\zihao{4}\filright\linespread{1.2}},
+    nameformat={},
+    aftername={\quad},
+    titleformat={},
+    beforeskip={6bp},
+    afterskip={0bp},
+]{subsection}
+\CTEXsetup[
+    format={\heiti\zihao{-4}\filright\linespread{1.2}},
+    nameformat={},
+    aftername={\quad},
+    titleformat={},
+    beforeskip={0bp},
+    afterskip={0bp},
+]{subsubsection}
+%================带有大章节字样的页依然显示页眉标签===============================
+\fancypagestyle{plain}{
+	\fancyhf{}\fancyhead[C]{\zihao{-5}\centering\songti\label@university\thesisnamehead}
+	\fancyfoot[C]{\small --~\thepage~--}
+}
+%==============设置页眉==================================
+\pagestyle{fancy} 
+%===========清除以前对页眉页脚的设置并重新设置======================
+\fancyhf{} 
+\fancyhead[C]{\small\label@university\thesisnamehead}
+\fancyfoot[C]{\small --~\thepage~--}
+%================设定各项文档信息的具体内容=================================
+\newcommand\etitle[1]{\def\@etitle{#1}}
+\newcommand\eauthor[1]{\def\@eauthor{#1}}
+\newcommand\studentid[1]{\def\@studentid{#1}}
+\newcommand\school[1]{\def\@school{#1}}
+\newcommand\major[1]{\def\@major{#1}}
+\newcommand\emajor[1]{\def\@emajor{#1}}
+\newcommand\direction[1]{\def\@direction{#1}}
+\newcommand\mentor[1]{\def\@mentor{#1}}
+\newcommand\ementor[1]{\def\@ementor{#1}}
+\newcommand\keywords[1]{\def\@keywords{#1}}
+\newcommand\ekeywords[1]{\def\@ekeywords{#1}}
+\newcommand\departmenthead[1]{\def\@departmenthead{#1}}
+%=================用下划线填充指定的空间======================
+\newcommand{\fillinblank}[2]{
+	\CJKunderline{\makebox[#1]{#2}}
+}
+%===============将对象放到页面底部====================================
+\newcommand{\putonbottom}[1]{\begin{figure}[b!]%
+	\begin{minipage}{\textwidth}{#1}\end{minipage}\end{figure}}
+%=====================定义封面=======================================
+\renewcommand\maketitle{
+	\cleardoublepage
+	\begin{titlepage}
+		\begin{center}
+			{
+				{\zihao{3}\bfseries\universityhead
+				\vspace{4.5em}\par
+				\fontsize{42pt}{\baselineskip}\selectfont\bfseries\graduationname}
+			}
+			\vfill
+			{
+				\zihao{-2}
+				\linespread{1.2}
+				\begin{tabular}{l@{\extracolsep{0.2em}}c}
+					{\label@title}    & {\makebox[0pt][l]{
+								\begin{minipage}[t]{12em}
+									\centering\@title
+								\end{minipage}}
+							\parbox[t]{12em}{\fillinblank{12em}{}\\ \fillinblank{12em}{}\\ \fillinblank{12em}{}}\vspace{0.1em}\par}
+							\\[6pt]
+					{\label@school}    & {\makebox[0pt][l]{
+								\begin{minipage}[t]{12em}
+									\centering\@school
+								\end{minipage}}
+							\parbox[t]{12em}{\fillinblank{12em}{}}\vspace{-0.1em}\par}
+							\\[2pt]
+					{\label@author}    & {\makebox[0pt][l]{
+								\begin{minipage}[t]{12em}
+									\centering\@author
+								\end{minipage}}
+							\parbox[t]{12em}{\fillinblank{12em}{}}\vspace{-0.1em}\par}
+							\\[2pt]
+					{\label@mentor}    & {\makebox[0pt][l]{
+								\begin{minipage}[t]{12em}
+									\centering\@mentor
+								\end{minipage}}
+							\parbox[t]{12em}{\fillinblank{12em}{}}\vspace{-0.1em}\par}
+							\\[2pt]
+					{\label@departmenthead}    & {\makebox[0pt][l]{
+								\begin{minipage}[t]{12em}
+									\centering\@departmenthead
+								\end{minipage}}
+							\parbox[t]{12em}{\fillinblank{12em}{}}\vspace{-0.1em}\par}
+				\end{tabular}
+			}
+			\vfill
+			{\kaishu\zihao{2}\@date}
+			\vfill
+		\end{center}
+	\end{titlepage}
+}
+%===============不标号的章节==============
+%===============\matkboth命令设置相应的页眉内容====================
+\newcommand{\specialchap}[1]{%
+	\chapter*{#1}\markboth{#1}{}
+	\addcontentsline{toc}{chapter}{#1}\phantomsection%
+}
+%================中文排版========================
+\newenvironment{cabstract}{%
+	\chapter*{\zihao{-2}\heiti\@title}
+	\markboth{\@title}{}
+	\section*{\zihao{-2}\heiti\centering\cabstractname}
+	\vskip 0.5em%
+}{\putonbottom{\zihao{-4}\heiti\label@keywords \@keywords}}
+%=================英文排版================================
+\newenvironment{eabstract}{%
+	\chapter*{\zihao{-2}\@etitle}
+	\markboth{\@etitle}{}
+	\section*{\zihao{-2}\centering\eabstractname}
+	\vskip 0.5em%
+}{\putonbottom{\zihao{-4}\textbf{Keywords:} \@ekeywords}}
+%================设定各处标题的内容======================
+\AtEndOfClass{\input{pkuthss.def}}
+\endinput
+

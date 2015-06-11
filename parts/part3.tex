@@ -1,0 +1,206 @@
+\chapter{画图}
+一些简单的画图，代码看parts文件夹里的parts3.tex，看不懂的可以复制粘贴（：
+	\section{流程图}
+		\subsection{样式一}	
+\begin{minipage}[t]{0.8\textwidth}
+\scriptsize
+ \setlength{\unitlength}{1.8em}
+%% start of flow output
+\begin{picture}(6.000000,28.000000)(-3.000000,-28.000000)
+
+\put(8.0000,-8.0000){\framebox(6.0000,2.0000)[c]{\shortstack[c]{软件工程师工作日志\\管理平台前端页面}}}
+\put(-2.5000,-9.0000){\line(1,0){27.0000}}
+%
+\put(-4.0000,-12.0000){\framebox(3.0000,2.0000)[c]{\shortstack[c]{用户功\\能模块}}}
+\put(-2.5000,-9.0000){\vector(0,-1){1.0000}}
+\put(-2.5000,-12.0000){\line(0,-1){1.0000}}
+\put(-3.5000,-13.0000){\line(1,0){2.0000}}
+\put(-3.5000,-13.0000){\vector(0,-1){1.0000}}
+\put(-1.5000,-13.0000){\vector(0,-1){1.0000}}
+\put(-4.2500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{用\\户\\注\\册}}}
+\put(-2.2500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{用\\户\\登\\录}}}
+%
+\put(2.5000,-12.0000){\framebox(3.0000,2.0000)[c]{\shortstack[c]{日志周\\报模块}}}
+\put(4.0000,-9.0000){\vector(0,-1){1.0000}}
+\put(4.0000,-12.0000){\line(0,-1){1.0000}}
+\put(3.0000,-13.0000){\line(1,0){2.0000}}
+\put(3.0000,-13.0000){\vector(0,-1){1.0000}}
+\put(5.0000,-13.0000){\vector(0,-1){1.0000}}
+\put(2.2500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{日\\志\\分\\类}}}
+\put(4.2500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{日\\志\\详\\情}}}
+%
+\put(9.5000,-12.0000){\framebox(3.0000,2.0000)[c]{\shortstack[c]{博客文\\章模块}}}
+\put(11.0000,-8.0000){\vector(0,-1){2.0000}}
+\put(11.0000,-12.0000){\line(0,-1){1.0000}}
+\put(10.0000,-13.0000){\line(1,0){2.0000}}
+\put(10.0000,-13.0000){\vector(0,-1){1.0000}}
+\put(12.0000,-13.0000){\vector(0,-1){1.0000}}
+\put(9.2500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{博\\客\\分\\类}}}
+\put(11.2500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{博\\客\\详\\情}}}
+%
+\put(16.5000,-12.0000){\framebox(3.0000,2.0000)[c]{\shortstack[c]{说说状\\态模块}}}
+\put(18.0000,-9.0000){\vector(0,-1){1.0000}}
+\put(18.0000,-12.0000){\line(0,-1){1.0000}}
+\put(17.0000,-13.0000){\line(1,0){2.0000}}
+\put(17.0000,-13.0000){\vector(0,-1){1.0000}}
+\put(19.0000,-13.0000){\vector(0,-1){1.0000}}
+\put(16.2500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{说\\说\\分\\类}}}
+\put(18.2500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{说\\说\\详\\情}}}
+%
+\put(23.0000,-12.0000){\framebox(3.0000,2.0000)[c]{\shortstack[c]{网站导\\航模块}}}
+\put(24.5000,-9.0000){\vector(0,-1){1.0000}}
+\put(24.5000,-12.0000){\line(0,-1){1.0000}}
+\put(23.5000,-13.0000){\line(1,0){2.0000}}
+\put(23.5000,-13.0000){\vector(0,-1){1.0000}}
+\put(25.5000,-13.0000){\vector(0,-1){1.0000}}
+\put(22.7500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{导\\航\\分\\类}}}
+\put(24.7500,-20.0000){\framebox(1.5000,6.0000)[c]{\shortstack[c]{导\\航\\详\\情}}}
+
+\end{picture}
+%% end of flow output
+\end{minipage}
+		\subsection{样式二}
+\begin{tikzpicture}[node distance=2cm]
+ %定义流程图具体形状
+\node (start) [startstop] {开始};
+\node (in1) [io, below of=start, yshift=-0.5cm] {用户进入首页};
+\node (dec1) [decision, below of=in1, yshift=-1.5cm] {是否注册过};
+\node (pro1) [process, right of=dec1, xshift=2.6cm] {用户填写注册信息};
+\node (dec2) [decision, right of=pro1, xshift=2.5cm] {是否符合规则};
+\node (pro2) [process, above of=dec2, yshift=1.5cm] {提示用户填写不合格};
+\node (pro3) [process, below of=dec2, yshift=-1.5cm] {注册成功};
+\node (out1) [io, below of=dec1, yshift=-1.5cm] {登录网站};
+\node (stop) [startstop, below of=out1, yshift=-0.5cm] {结束};
+ %连接具体形状
+\draw [arrow](start) -- (in1);
+\draw [arrow](in1) -- (dec1);
+\draw [arrow](dec1) -- node[anchor=east] {no} (pro1);
+\draw [arrow](dec1) -- node[anchor=south] {yes} (out1);
+\draw [arrow](pro1) -- (dec2);
+\draw [arrow](dec2) -- node[anchor=north] {no} (pro2);
+\draw [arrow](pro2) -| (pro1);
+\draw [arrow](dec2) -- node[anchor=south] {yes} (pro3);
+\draw [arrow](pro3) -- (out1);
+\draw [arrow](out1) -- (stop);
+\end{tikzpicture}
+	\subsection{样式三}
+		\begin{minipage}[t]{0.8\textwidth}
+\begin{tikzpicture}[->,>=stealth',shorten >=1pt,auto,node distance=2.8cm,
+                    semithick]
+ 
+  \node[process]         (S1) at (-3, 5)              {$\verb|k_isNote|$};
+  \node[state]         (xin1) at (-2, 9)           {$\verb|kt_isNote_id|$};
+  \node[state]         (xin2) at (-8, 1)        {$\verb|kt_isNote_date|$};
+  \node[state]         (xin3) at (-8, 3)       {$\verb|kt_isNote_content|$};
+  \node[state]         (xin4) at (-8, 5)           {$\verb|kt_isNote_title|$};
+  \node[state]         (xin5) at (-8, 7)           {$\verb|kt_isNote_year|$};
+  \node[state]         (xin6) at (-8, 9)           {$\verb|kt_isNote_month|$};
+  \node[state]         (xin7) at (2, -2)           {$\verb|kt_isNote_day|$};
+  \node[state]         (xin8) at (2, 9)           {$\verb|kt_isNote_country|$};
+  \node[state]         (xin9) at (2, 7)           {$\verb|kt_isNote_author|$};
+  \node[state]         (xin10) at (2, 1)           {$\verb|kt_isNote_url|$};
+  \node[state]         (xin11) at (2, 3)           {$\verb|kt_isNote_img|$};
+  \node[state]         (xin12) at (2, 5)           {$\verb|kt_isNote_isIf|$};
+  \node[state]         (xin13) at (-2, 0)           {$\verb|kt_user_id|$};
+  \node[state]         (xin14) at (-6, -1)           {$\verb|kt_isTag_id|$};
+  \node[process]         (S2) at (-8, -3)              {$\verb|k_isTag|$};
+  \node[process]         (S3) at (-3, -5)              {$\verb|k_user|$};
+
+  \path (S1) edge[bend left=26]              node {} (xin1)
+            edge[bend left=12]              node {} (xin2)
+            edge[bend right=12]             node {} (xin3)
+            edge[bend right=26]             node {} (xin4)
+            edge[bend left=12]              node {} (xin5)
+            edge[bend right=12]             node {} (xin6)
+            edge[bend right=26]             node {} (xin7)
+            edge[bend left=12]              node {} (xin8)
+            edge[bend right=12]             node {} (xin9)
+            edge[bend right=26]             node {} (xin10)
+            edge[bend left=12]              node {} (xin11)
+            edge[bend right=12]             node {} (xin12)
+            edge[bend right=26]             node {} (xin13)
+            edge[bend right=12]             node {} (xin14)
+            (xin13) edge  node {$m/n$} (S3)
+        	(xin14) edge  node {$m/n$} (S2);
+\end{tikzpicture}
+\end{minipage}
+\vspace{0.5em}\par
+	\centerline{\songti\zihao{-5}{喵喵～}}
+	\subsection{样式四}
+	\begin{minipage}[t]{0.8\textwidth} 
+\tikzstyle{every node}=[anchor=west]
+\begin{tikzpicture}[%
+  grow via three points={one child at (0.5,-0.7) and
+  two children at (0.5,-0.7) and (0.5,-1.4)},
+  edge from parent path={(\tikzparentnode.south) |- (\tikzchildnode.west)}]
+  \node {ROOT}
+    child { node {bin/}}     
+    child { node {models/}}
+    child { node {node\_modules/}}
+	child { node {public/}}
+    child { node {routes/}}
+    child { node {views/}}          
+    child { node {app.js}}
+    child { node {db.js}}
+    child { node {GruntFile.js}}
+    child { node {package.json}}
+    child { node {...}};
+\end{tikzpicture}	
+\end{minipage}
+\vspace{0.5em}\par
+\centerline{\songti\zihao{-5}{喵～}}
+	\section{画表格}
+\begin{table}[h]
+\renewcommand\arraystretch{1.5}
+  \centering
+  \caption{日期表}
+  \label{tab:tabexamp4}
+  \begin{minipage}[t]{0.8\textwidth} 
+\begin{tabular}{m{4cm}<{\centering}|m{2cm}<{\centering}|m{2cm}<{\centering}|m{2cm}<{\centering}}
+\hline
+字段名 & 数据类型 & 长度 & 是否为空  \rule{0pt}{0cm}\\ 
+\hline 
+\verb|kt_isDate_id| & int & 50 & 否  \rule{0pt}{0cm} \\ 
+\hline 
+\verb|kt_isDate_date| & varchar & 100 & 否  \rule{0pt}{0cm} \\ 
+\hline 
+\verb|kt_isNote_id| & int & 50 & 否  \rule{0pt}{0cm} \\ 
+\hline 
+\verb|kt_user_id| & int & 50 & 否  \rule{0pt}{0cm} \\ 
+\hline 
+\verb|kt_isNote_isIf| & varchar & 50 & 否  \rule{0pt}{0cm} \\ 
+\hline 
+\end{tabular}
+  \end{minipage}
+\end{table}
+	\section{代码块}
+	Node.js发布脚本代码设计如下所示：
+\begin{lstlisting}[language={[ANSI]C},numbers=left,frame=shadowbox,rulesepcolor=\color{gray!2},breaklines=true,backgroundcolor=\color{gray!5},basicstyle=\footnotesize]
+#!/bin/sh
+#
+if [ ! -z "$2" ]; then
+   if [ ! -d "$1/$2" ]; then
+      mkdir -p "$1/$2"
+   else
+      echo "[info] shudown app $2"
+      cd $1/$2
+      forever stop
+   
+      server_backup_dir=$1/$2.bak
+      if [ -d $server_backup_dir ]; then
+         rm -rf $server_backup_dir
+      fi
+      mkdir $server_backup_dir
+
+      echo "[info] backup files in $1/$2"
+      tar -czvf $2.bak.tgz $1/$2 > /dev/null 2>&1
+      mv $2.bak.tgz $server_backup_dir
+      echo "[info] remove old files"
+   fi
+   cd $1
+   tar -xzf $2.tar.gz -C $1/$2/
+   echo "[info] start app $2"
+   cd $1/$2
+   forever start bin/www
+fi
+\end{lstlisting} 

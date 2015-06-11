@@ -1,0 +1,183 @@
+\documentclass[UTF8,hyperref,oneside]{pkuthss}
+%========================产生originauth.tex里的\Square===========================
+\usepackage{wasysym}
+%=========================提供verbatiminput命令和comment环境===================
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{tikz,mathpazo}
+\usepackage{pgf}
+%==============================去掉目录中超级链接的红色颜色改为黑色=================
+\usepackage[colorlinks=true,linkcolor=black]{hyperref}
+%==============================使用新罗马字体=====================
+%\usepackage{times}
+%\usepackage{txfonts}
+%\usepackage{mathptmx}
+%\usepackage[mtbold,mtpluscal,mtplusscr]{mathtime}%数学环境用Times New Roman
+%==========================表格设置行间距============================
+%\usepackage{setspace}
+%===============================代码框=============================
+\usepackage{graphicx}  
+\usepackage{xcolor}  
+\usepackage{listings}  
+%========================代码块设定=======网上找的示例，可以有选择的应用============================
+%\lstset{%  
+%alsolanguage=Java,  
+%%language={[ISO]C++},       %language为，还有{[Visual]C++}  
+%%alsolanguage=[ANSI]C,      %可以添加很多个alsolanguage,如alsolanguage=matlab,alsolanguage=VHDL等  
+%%alsolanguage= tcl,  
+%alsolanguage= XML,  
+%tabsize=4, %  
+%  frame=shadowbox, %把代码用带有阴影的框圈起来  
+%  commentstyle=\color{red!50!green!50!blue!50},%浅灰色的注释  
+%  rulesepcolor=\color{red!20!green!20!blue!20},%代码块边框为淡青色  
+%  keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色，粗体  
+%  showstringspaces=false,%不显示代码字符串中间的空格标记  
+%  stringstyle=\ttfamily, % 代码字符串的特殊格式  
+%  keepspaces=true, %  
+%  breakindent=22pt, %  
+%  numbers=left,%左侧显示行号 往左靠,还可以为right，或none，即不加行号  
+%  stepnumber=1,%若设置为2，则显示行号为1,3,5，即stepnumber为公差,默认stepnumber=1  
+%  %numberstyle=\tiny, %行号字体用小号  
+%  numberstyle={\color[RGB]{0,192,192}\tiny} ,%设置行号的大小，大小有tiny,scriptsize,footnotesize,small,normalsize,large等  
+%  numbersep=8pt,  %设置行号与代码的距离，默认是5pt  
+%  basicstyle=\footnotesize, % 这句设置代码的大小  
+%  showspaces=false, %  
+%  flexiblecolumns=true, %  
+%  breaklines=true, %对过长的代码自动换行  
+%  breakautoindent=true,%  
+%  breakindent=4em, %  
+%%  escapebegin=\begin{CJK*}{GBK}{hei},
+%%  escapeend=\end{CJK*},  
+%  aboveskip=1em, %代码块边框  
+%  tabsize=2,  
+%  showstringspaces=false, %不显示字符串中的空格  
+%  backgroundcolor=\color[RGB]{245,245,244},   %代码背景色  
+%  %backgroundcolor=\color[rgb]{0.91,0.91,0.91}    %添加背景色  
+%  escapeinside=``,  %在``里显示中文  
+%  %% added by http://bbs.ctex.org/viewthread.php?tid=53451  
+%  fontadjust,  
+%  captionpos=t,  
+%  framextopmargin=2pt,framexbottommargin=2pt,abovecaptionskip=-3pt,belowcaptionskip=3pt,  
+%  xleftmargin=4em,xrightmargin=4em, % 设定listing左右的空白  
+%  texcl=true,  
+%  % 设定中文冲突，断行，列模式，数学环境输入，listing数字的样式  
+%  extendedchars=false,columns=flexible,mathescape=true  
+%  % numbersep=-1em  
+%}  
+%
+%====================================流程图=============================
+\usepackage{tikz}
+\usetikzlibrary{trees}
+\usetikzlibrary{shapes.geometric,arrows, decorations.pathmorphing, backgrounds, positioning, fit, petri, automata}
+%==================================设置流程图的节点样式和基本形状===========================
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+\tikzstyle{every state}=[rectangle, rounded corners, minimum width=1cm, minimum height=1cm,text centered, draw=black, fill=red!30]
+%========================================重定义章节标签==============================
+%\usepackage[titles]{tocloft}
+\usepackage[clearempty,indentafter]{titlesec}
+\usepackage{interfaces-titlesec}
+%===============================目录章节字体样式=================
+\usepackage{titletoc}
+\titlecontents{chapter}[0pt]{\color{black}\heiti\zihao{-4}}
+              {\contentspush{\thecontentslabel}}
+              {}{\titlerule*[8pt]{.}\contentspage\zihao{-4}}
+\titlecontents{section}[22pt]{\color{black}\songti\zihao{-4}}
+              {\contentspush{\thecontentslabel\ }}
+              {}{\titlerule*[8pt]{.}\contentspage\zihao{-4}}
+\titlecontents{subsection}[40pt]{\color{black}\songti\zihao{-4}}
+              {\contentspush{\thecontentslabel}}
+              {}{\titlerule*[8pt]{.}\contentspage\zihao{-4}}
+\titlecontents{subsubsection}[45pt]{\color{black}\songti\zihao{-4}}
+              {\contentspush{\thecontentslabel}}
+              {}{\titlerule*[8pt]{.}\contentspage\zihao{-4}}
+%\titlecontents{chapter}[0pt]{\vspace{.5\baselineskip}\bfseries}{第\CJKnumber{\thecontentslabel}章\quad}{}{\hspace{.5em}\titlerule*[10pt]{$\cdot$}\contentspage}
+%其中0pt是目录项到版芯左边界的距离。紧跟其后的是在排版目录项之前执行的命令，这里\vspace{.5\baselineskip}表示与上文留出一定的垂直距离，该距离为当前单倍行间距的一半。\bfseries把整条目录项的字体设为黑体。
+% ===========================解决目录章节重叠问题=============================
+%\makeatletter
+%\renewcommand{\numberline}[1]{%
+%\settowidth\@tempdimb{#1\hspace{0.5em}}%
+%\ifdim\@tempdima<\@tempdimb%
+%  \@tempdima=\@tempdimb%
+%\fi%
+%\hb@xt@\@tempdima{\@cftbsnum #1\@cftasnum\hfil}\@cftasnumb}
+%\makeatother
+%==============================分别设置中文字体和英文字体=================
+\usepackage{xeCJK} 
+\usepackage{fontspec,xltxtra,xunicode} 
+\setCJKmainfont{宋体} 
+\setCJKmonofont{宋体} 
+\setmainfont{Times New Roman} 
+\definecolor{yellow1}{rgb}{1,0.8,0.2} 
+%\usepackage{indentfirst}
+%=====================================设定行距========================================
+%\linespread{1.3}
+\renewcommand{\baselinestretch}{1}
+%===================================使引用标记成为上标======================================
+\newcommand{\supercite}[1]{\textsuperscript{\cite{#1}}}
+%=====================罗列环境中如果每个项目都只有一行左右，则会显得很松散，此时可采用这个命令==========================
+\newcommand{\denseenum}{\setlength{\itemsep}{0pt}}
+%===========================以上都是基础设置，除样式变化之外不需要改动=======================================
+%==============================================================================================================
+%=================================================================================================
+%=================================================================================================
+%=====================================开始设置首页封面等基本文字=======================================
+\begin{document}
+	%=========================================各种文档信息=================
+	\renewcommand{\thesisname}{本科生毕业论文}
+	\renewcommand{\thesisnamehead}{学士学位论文}
+	%=================================题目一般不宜超过20个字======================
+	\title{基于MVC的软件工程师工作日志管理平台的设计与实现}
+	\etitle{Software engineers work log management platform based on MVC}
+	\author{康健}
+	\eauthor{Jian Kang}
+	\studentid{1114010609}
+	\date{2015年6月16日}
+	\school{软件工程学院}
+	\major{软件工程}
+	\emajor{Software engineering}
+	\direction{嵌入式技术}
+	\mentor{刘宇鹏}
+	\ementor{Yupeng Liu}
+	\departmenthead{郭红}
+	%=======================================关键词应有3~5个=========================
+	\keywords{\heiti 模块化开发\songti 、\heiti MVC\songti 、\heiti Node.js\songti 、\heiti NPM}
+	\ekeywords{Modular Development,MVC,Node.js,NPM}
+	%===========================以下为正文之前的部分，页码为小写罗马数字，但不显示页眉和页脚========================
+	%\frontmatter\pagenumbering{roman}\pagestyle{empty}现在改为大写罗马数字
+    \frontmatter\pagenumbering{Roman}
+	\maketitle
+	%======================================中英文摘要===========================
+	\include{parts/abstract}
+	%========================================自动生成目录=========================
+	\tableofcontents
+	%===============================以下为正文，页码为小写罗马数字，但不显示页眉和页脚====================
+	\mainmatter\pagenumbering{arabic}\pagestyle{fancy}
+	%=========================================如果写绪言，择在parts文件夹添加======================
+	%\include{chap/introduction}
+	%===========================================开始各章节===============================================
+	\include{parts/part1}
+	\include{parts/part2}
+	\include{parts/part3}
+	%=============================================结论=============================
+	%===========================以下为正文之后的部分，页码为大写罗马数字=========================
+	\backmatter\pagenumbering{Roman}
+	\include{parts/conclusion}
+	% ============================================参考文献=========================================
+	\begin{appendix}{\songti\zihao{-4}}
+		%==================================设置参考文献========================================
+		\bibliographystyle{chinesebst}
+		\bibliography{bookBib}
+		%==================================此命令手动地在目录中增加相当于章级别的一行=================
+		\addcontentsline{toc}{chapter}{参考文献}{\heiti\zihao{-2}\centering}
+		\phantomsection
+	\end{appendix}
+	%=========================================致谢==========================================
+	\include{parts/thanks}
+	%===========================================附录====================================================
+	\include{parts/addendum}
+\end{document}
+

@@ -1,2 +1,1 @@
-# latex-demo
-s
+哈尔滨理工大学Latex毕业设计论文模板

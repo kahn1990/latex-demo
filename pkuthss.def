@@ -1,0 +1,35 @@
+% vim:filetype=tex:tabstop=2
+% Peking University dissertation configuration file
+
+\def\label@university{哈尔滨理工大学}
+\def\label@title{题\hspace{2em}目：}
+\def\label@author{姓\hspace{2em}名：}
+\def\label@studentid{学、\hspace{1em}号：}
+\def\label@school{院\hspace{2em}系：}
+\def\label@major{专\hspace{2em}业：}
+\def\label@direction{研究方向：}
+\def\label@mentor{指导教师：}
+\def\label@departmenthead{系\hspace{0.5em}主\hspace{0.5em}任：}
+\def\label@keywords{关键词：}
+
+%\def\departmenthead{郭红}
+\def\universityhead{哈\hspace{1em}尔\hspace{1em}滨\hspace{1em}理\hspace{1em}工\hspace{1em}大\hspace{1em}学}
+\def\graduationname{毕\hspace{1em}业\hspace{1em}设\hspace{1em}计}
+\def\thesisnamehead{学士学位论文}
+\def\thesisname{本科生学位论文}
+\def\cabstractname{摘要}
+\def\eabstractname{Abstract}
+
+%设置页眉双线条
+\def\headrule{
+	{
+		\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi%
+		\hrule\@height 1.0pt \@width\headwidth\vskip1pt%上面线为1pt粗
+		\hrule\@height 0.5pt\@width\headwidth  %下面0.5pt粗
+		\vskip-2\headrulewidth\vskip-1pt
+	}      %两条线的距离1pt
+	\vspace{6mm}
+}     %双线与下面正文之间的垂直间距
+
+\endinput
+
